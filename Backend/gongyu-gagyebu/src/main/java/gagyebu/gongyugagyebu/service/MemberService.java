@@ -3,15 +3,19 @@ package gagyebu.gongyugagyebu.service;
 import gagyebu.gongyugagyebu.Repository.MemberRepository;
 import gagyebu.gongyugagyebu.Repository.MemoryMemberRepository;
 import gagyebu.gongyugagyebu.domain.Member;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
     private final MemberRepository memberRepository;
 
 
     // DI 이러한 것들이
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
