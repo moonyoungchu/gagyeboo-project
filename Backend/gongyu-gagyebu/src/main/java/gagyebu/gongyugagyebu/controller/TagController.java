@@ -1,6 +1,5 @@
 package gagyebu.gongyugagyebu.controller;
 
-
 import gagyebu.gongyugagyebu.domain.Member;
 import gagyebu.gongyugagyebu.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,40 +11,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class MemberController {
-
+public class TagController {
     private final MemberService memberService;
 
-    // 다른 여러 컨트롤러에서 가져다가 사용 가능
-
     @Autowired
-    public MemberController(MemberService memberService) {
+    public TagController(MemberService memberService) {
         this.memberService = memberService;
     }
 
-    @GetMapping("/members/new")
+    @GetMapping("/tags/new")
     public String createForm(){
-        return "members/createMemberForm";
+        return "tags/createTagForm";
     }
 
-    @PostMapping("/members/new")
-    public String create(MemberForm form){
-        Member member = new Member();
-        member.setName(form.getName());
-        memberService.join(member);
+    @PostMapping("/tags/new")
+    public String create(TagForm form){
+        Member tag = new Member();
+        tag.setName(form.getTag());
+        memberService.join(tag);
 
         return "redirect:/";
-        // 홈화면으로 보내기
     }
 
-
-    @GetMapping("/members")
+    @GetMapping("/tags")
     public String list(Model model){
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-        return "members/memberList";
-
+        List<Member> tags = memberService.findMembers();
+        model.addAttribute("tags", tags);
+        return "tags/tagList";
     }
-
-
 }
+
