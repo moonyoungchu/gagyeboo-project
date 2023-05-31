@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function FloatingButton() {
   return (
-    <Link href="/items/upload">
+    <Link href="/items/add">
       <a
         className="fixed hover:bg-blue-500 border-0 aspect-square border-transparent 
       transition-colors cursor-pointer  bottom-10 right-5 

@@ -10,20 +10,19 @@ export default function Navigation({
   canGoBack,
   showMenubar,
 }: NavigationProps) {
-    
   const router = useRouter();
 
   const onClick = () => {
     router.back();
   };
 
-  console.log(">>>canGoBack",canGoBack)
-  console.log(">>>showMenubar",showMenubar)
+  console.log(">>>canGoBack", canGoBack, ">>>showMenubar", showMenubar);
 
   return (
     <div
-      className="bg-white w-full h-12 max-w-xl justify-center text-lg px-10 
-  font-medium  fixed text-gray-800 border-b top-0 flex items-center"
+      className="bg-yellow-100 w-full h-12 max-w-xl
+    text-lg font-medium text-gray-800 border-b 
+    top-0 fixed flex justify-center items-center"
     >
       {canGoBack ? (
         <button onClick={onClick} className="absolute left-4">
@@ -45,22 +44,28 @@ export default function Navigation({
       ) : null}
 
       {showMenubar ? (
-        <button onClick={onClick} className="absolute left-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
+        <div className="flex justify-between w-full max-w-xl px-3">
+          <button onClick={onClick}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
+
+          <Link href="/budget">
+            <a className="border-yellow-400 border-solid border-2">예산수정</a>
+          </Link>
+        </div>
       ) : null}
     </div>
   );
