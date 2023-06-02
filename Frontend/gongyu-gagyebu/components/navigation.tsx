@@ -21,8 +21,7 @@ export default function Navigation({
   return (
     <div
       className="bg-yellow-100 w-full h-12 max-w-xl
-    text-lg font-medium text-gray-800 border-b 
-    top-0 fixed flex justify-center items-center"
+    text-lg font-medium text-gray-800 border-b top-0 fixed flex justify-center items-center"
     >
       {canGoBack ? (
         <button onClick={onClick} className="absolute left-4">
@@ -45,7 +44,7 @@ export default function Navigation({
 
       {showMenubar ? (
         <div className="flex justify-between w-full max-w-xl px-3">
-          <button onClick={onClick}>
+          <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
