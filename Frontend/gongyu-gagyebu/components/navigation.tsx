@@ -4,11 +4,13 @@ import { useRouter } from "next/router";
 interface NavigationProps {
   canGoBack?: boolean;
   showMenubar?: boolean;
+  title?: string;
 }
 
 export default function Navigation({
   canGoBack,
   showMenubar,
+  title
 }: NavigationProps) {
   const router = useRouter();
 
@@ -23,6 +25,8 @@ export default function Navigation({
       className="bg-yellow-100 w-full h-12 max-w-xl
     text-lg font-medium text-gray-800 border-b top-0 fixed flex justify-center items-center"
     >
+      {title}
+
       {canGoBack ? (
         <button onClick={onClick} className="absolute left-4">
           <svg
