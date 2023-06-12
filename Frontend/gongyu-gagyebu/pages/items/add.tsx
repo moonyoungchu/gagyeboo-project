@@ -5,9 +5,9 @@ import Tag from "../../components/tag";
 
 const Add: NextPage = () => {
   return (
-    <Layout canGoBack={true}>
+    <Layout canGoBack={true} title={"소비 추가"}>
       <Head>
-        <title>{`지출 추가`}</title>
+        <title>{`소비 추가`}</title>
       </Head>
 
       <div className="flex text-xl"> 3월 <input value="17" id="addtag" className="w-10 appearance-none border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"></input>일 </div>
@@ -35,7 +35,7 @@ const Add: NextPage = () => {
         className="w-full h-12 max-w-xl bottom-10 fixed flex justify-center items-center"
       >
         <button className="w-full mx-3 py-3 flex text-xl items-center justify-center bg-yellow-400 border-solid border-2">
-          지출 추가
+          추가하기
         </button>
       </div>
     </Layout>
