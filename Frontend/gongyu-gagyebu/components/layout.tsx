@@ -7,19 +7,21 @@ import Navigation from "./navigation";
 interface LayoutProps {
   canGoBack?: boolean;
   showMenubar?: boolean;
+  title?: string;
   children: React.ReactNode;
 }
 
 export default function Layout({
   canGoBack,
   showMenubar,
+  title,
   children,
 }: LayoutProps) {
   const router = useRouter();
 
   return (
     <div>
-      <Navigation canGoBack={canGoBack} showMenubar={showMenubar} />
+      <Navigation canGoBack={canGoBack} showMenubar={showMenubar} title={title}/>
 
       {router.pathname === "/" || router.pathname === "/year" ? (
         <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-blue-100 top-12 fixed w-full max-w-xl">
