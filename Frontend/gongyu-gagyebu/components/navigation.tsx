@@ -22,8 +22,7 @@ export default function Navigation({
 
   return (
     <div
-      className="bg-yellow-100 w-full h-12 max-w-xl
-    text-lg font-medium text-gray-800 border-b top-0 fixed flex justify-center items-center"
+      className="bg-white w-full h-12 max-w-xl text-lg font-medium text-gray-800 top-0 fixed flex justify-center items-center"
     >
       {title}
 
@@ -66,7 +65,7 @@ export default function Navigation({
           </button>
 
           <Link href="/budget">
-            <a className="border-yellow-400 border-solid border-2">예산수정</a>
+            <a className="outline-yellow-400 outline">예산수정</a>
           </Link>
         </div>
       ) : null}
