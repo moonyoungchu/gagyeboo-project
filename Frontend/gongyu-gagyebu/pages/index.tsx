@@ -13,7 +13,6 @@ const Home: NextPage = () => {
     setSort(value);
   };
 
-
   console.log(">>>sort", sort);
   return (
     <Layout showMenubar={true}>
@@ -23,18 +22,23 @@ const Home: NextPage = () => {
 
       {/* 이번달 지출 페이지 */}
 
-      <div className="flex justify-center">2023년 5월</div>
-      <div className="flex justify-end border-yellow-400 border-solid border-2 px-2 py-1 bg-slate-300">
-        예산 100,000원
-      </div>
-      <div className="flex justify-end pr-1 py-1 bg-slate-300">
-        지출 100,000원
-      </div>
-      <div className="flex justify-end pr-1 bg-slate-300">
-        남은 금액 100,000원
+      <div className="flex justify-center text-xl py-2">2023년 5월</div>
+
+      <div>
+        <div className="flex justify-end outline-yellow-300 outline px-2 py-1 m-2 rounded">
+          예산 100,000원
+        </div>
+        <div className="flex justify-end outline-yellow-300 outline px-2 py-1 m-2 rounded">
+          지출 100,000원
+        </div>
+        <div className="flex justify-end outline-yellow-300 outline px-2 py-1 m-2 rounded">
+          남은 금액 100,000원
+        </div>
       </div>
 
-      <div className="flex justify-center bg-slate-500">그래프</div>
+      <div className="flex justify-center outline-black outline m-2 h-10">
+        가로 막대그래프(지출 30% / 잔여 70%)
+      </div>
 
       <div className="flex justify-end pr-1">
         <div className="flex space-x-1 rounded-lg bg-slate-100 p-0.5">
