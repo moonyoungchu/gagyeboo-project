@@ -17,6 +17,7 @@ import {
   //Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import {Context} from 'chartjs-plugin-datalabels';
 
 ChartJS.register(
   CategoryScale,
@@ -29,20 +30,19 @@ ChartJS.register(
 );
 
 export const options = {
-  indexAxis: "y",
-  maintainAspectRatio: false, // 가로 세로 비율 유지 비활성화
+  indexAxis: "y" as const,
+  maintainAspectRatio: false,
   plugins: {
     title: {
       display: false,
       text: "이번달 지출 차트",
     },
     legend: {
-      display: false, // 범례 표시 여부
-      position: "bottom",
+      display: false,
     },
     datalabels: {
       color: "black",
-      formatter: function (value, context) {
+      formatter: function (value:number, context:Context) {
         return `${context.dataset.label}(${Math.ceil(value * 0.0001)}%)`;
       },
     },
@@ -74,8 +74,8 @@ export const data = {
       barThickness: 35,
       backgroundColor: "rgb(255, 99, 132,0.5)",
       datalabels: {
-        align: "center",
-        anchor: "center",
+        align: 'center' as const,
+        anchor: 'center' as const
       },
     },
     {
@@ -84,8 +84,8 @@ export const data = {
       barThickness: 35,
       backgroundColor: "rgb(53, 162, 235, 0.5)",
       datalabels: {
-        align: "center",
-        anchor: "center",
+        align: 'center' as const,
+        anchor: 'center' as const
       },
     },
   ],
