@@ -7,6 +7,8 @@ import { MouseEvent, useState } from "react";
 import { cls } from "../libs/utils";
 import MonthChart from "../components/month-chart"
 
+import {testData} from "../test/testdata.js"
+
 
 const Home: NextPage = () => {
   const [sort, setSort] = useState("date");
@@ -73,7 +75,7 @@ const Home: NextPage = () => {
                 sort === "date" ? "text-slate-900" : "text-slate-600"
               )}
             >
-              날짜별
+              날짜순
             </span>
           </button>
 
@@ -105,28 +107,27 @@ const Home: NextPage = () => {
                 sort === "tag" ? "text-slate-900" : "text-slate-600"
               )}
             >
-              태그별
+              태그순
             </span>
           </button>
         </div>
       </div>
 
       <div className="flex flex-col">
-        {sort === "date" &&
-          [1, 1, 1, 1, 1].map((_, i) => (
+        {
+          testData.map((item, index) => (
             <Item
-              id={i}
-              key={i}
-              title="신전떡볶이"
-              price={5000}
-              date={"03/05"}
+              id={index}
+              key={index}
+              sort={sort}
+              tagName={item.tagName}
+              title={item.title}
+              price={item.price}
+              yyyymm = {item.yyyymm}
+              day={item.day}
             />
           ))}
 
-        {sort === "tag" &&
-          [1, 1, 1, 1, 1].map((_, i) => (
-            <Item id={i} key={i} title="쇼핑(20%)" price={220000} date={""} />
-          ))}
 
         <FloatingButton />
       </div>
