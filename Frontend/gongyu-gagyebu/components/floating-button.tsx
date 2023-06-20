@@ -4,9 +4,9 @@ export default function FloatingButton() {
   return (
     <Link href="/items/add">
       <a
-        className="fixed hover:bg-blue-500 border-0 aspect-square border-transparent 
+        className="fixed hover:bg-yellow-300 border-0 aspect-square border-transparent 
       transition-colors cursor-pointer  bottom-10 right-5 
-      shadow-xl bg-blue-400 rounded-full w-14 flex items-center 
+      shadow-xl bg-yellow-400 rounded-full w-14 flex items-center 
       justify-center text-white "
       >
         <svg
