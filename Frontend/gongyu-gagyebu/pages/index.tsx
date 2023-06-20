@@ -5,91 +5,8 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import { MouseEvent, useState } from "react";
 import { cls } from "../libs/utils";
+import MonthChart from "../components/month-chart"
 
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  //Title,
-  //Tooltip,
-  //Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import {Context} from 'chartjs-plugin-datalabels';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  //Title,
-  //Tooltip,
-  //Legend,
-  ChartDataLabels
-);
-
-export const options = {
-  indexAxis: "y" as const,
-  maintainAspectRatio: false,
-  plugins: {
-    title: {
-      display: false,
-      text: "이번달 지출 차트",
-    },
-    legend: {
-      display: false,
-    },
-    datalabels: {
-      color: "black",
-      formatter: function (value:number, context:Context) {
-        return `${context.dataset.label}(${Math.ceil(value * 0.0001)}%)`;
-      },
-    },
-  },
-  scales: {
-    x: {
-      display: false,
-      grid: {
-        display: false,
-      },
-      stacked: true,
-    },
-    y: {
-      display: false,
-      grid: {
-        display: false,
-      },
-      stacked: true,
-    },
-  },
-};
-
-export const data = {
-  labels: [""],
-  datasets: [
-    {
-      label: "쓴 돈",
-      data: [500000],
-      barThickness: 35,
-      backgroundColor: "rgb(255, 99, 132,0.5)",
-      datalabels: {
-        align: 'center' as const,
-        anchor: 'center' as const
-      },
-    },
-    {
-      label: "남은 돈",
-      data: [300000],
-      barThickness: 35,
-      backgroundColor: "rgb(53, 162, 235, 0.5)",
-      datalabels: {
-        align: 'center' as const,
-        anchor: 'center' as const
-      },
-    },
-  ],
-};
 
 const Home: NextPage = () => {
   const [sort, setSort] = useState("date");
@@ -122,7 +39,7 @@ const Home: NextPage = () => {
       </div>
 
       <div className="flex justify-center m-2 h-10">
-        <Bar options={options} data={data} />
+        <MonthChart />
       </div>
 
       <div className="flex justify-end pr-1">
