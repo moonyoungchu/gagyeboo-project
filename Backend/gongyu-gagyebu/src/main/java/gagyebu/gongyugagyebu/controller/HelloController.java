@@ -37,14 +37,11 @@ public class HelloController {
 
     static class Hello{
         private String name;
-
         // 자바 빈 규약 (getter / setter)
         // property 접근방식
-
         public String getName() {
             return name;
         }
-
         public void setName(String name) {
             this.name = name;
         }
