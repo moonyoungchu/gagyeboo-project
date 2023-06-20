@@ -5,10 +5,28 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import { MouseEvent, useState } from "react";
 import { cls } from "../libs/utils";
-import MonthChart from "../components/month-chart"
+import MonthChart from "../components/month-chart";
 
-import {testData} from "../test/testdata.js"
+import { testData, TestDataItem } from "../test/testdata";
 
+function setData(data: TestDataItem[], sort: string) {
+  console.log(">>>", data, sort);
+  
+  if (!data) {
+    return []; // data가 undefined일 경우 빈 배열을 반환
+  }
+
+  const copyData = [...data];
+
+  if (sort === "date") {
+    const sortedData = copyData.sort((a, b) => parseInt(a.day) - parseInt(b.day));
+    console.log(">>>2222", sortedData);
+    return sortedData;
+  } else if (sort === "tag") {
+    //TODO
+    return copyData;
+  }
+}
 
 const Home: NextPage = () => {
   const [sort, setSort] = useState("date");
@@ -16,6 +34,8 @@ const Home: NextPage = () => {
   const onSortBtnClick = (value: string) => {
     setSort(value);
   };
+
+  const data = setData(testData, sort);
 
   console.log(">>>sort", sort);
   return (
@@ -26,7 +46,7 @@ const Home: NextPage = () => {
 
       {/* 이번달 지출 페이지 */}
 
-      <div className="flex justify-center text-xl py-2">2023년 5월</div>
+      <div className="flex justify-center text-xl py-2">2023년 6월</div>
 
       <div>
         <div className="flex justify-end outline-yellow-300 outline px-2 py-1 m-2 rounded">
@@ -114,20 +134,18 @@ const Home: NextPage = () => {
       </div>
 
       <div className="flex flex-col">
-        {
-          testData.map((item, index) => (
-            <Item
-              id={index}
-              key={index}
-              sort={sort}
-              tagName={item.tagName}
-              title={item.title}
-              price={item.price}
-              yyyymm = {item.yyyymm}
-              day={item.day}
-            />
-          ))}
-
+        {data.map((item, index) => (
+          <Item
+            id={index}
+            key={index}
+            sort={sort}
+            tagName={item.tagName}
+            title={item.title}
+            price={item.price}
+            yyyymm={item.yyyymm}
+            day={item.day}
+          />
+        ))}
 
         <FloatingButton />
       </div>

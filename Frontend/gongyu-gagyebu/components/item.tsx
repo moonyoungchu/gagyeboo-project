@@ -19,6 +19,9 @@ export default function Item({
   id,
   sort,
 }: ItemProps) {
+
+
+  
   return (
     <Link href={`/items/${id}`}>
       <a className="flex w-full px-4 py-3 cursor-pointer justify-between">
