@@ -9,11 +9,11 @@ import MonthChart from "../components/month-chart";
 
 import { testData, TestDataItem } from "../test/testdata";
 
-function setData(data: TestDataItem[], sort: string) {
+function setData(data: TestDataItem[], sort: string): TestDataItem[] {
   console.log(">>>", data, sort);
   
   if (!data) {
-    return []; // data가 undefined일 경우 빈 배열을 반환
+    return [];
   }
 
   const copyData = [...data];
@@ -25,6 +25,8 @@ function setData(data: TestDataItem[], sort: string) {
   } else if (sort === "tag") {
     //TODO
     return copyData;
+  } else {
+    return data;
   }
 }
 
