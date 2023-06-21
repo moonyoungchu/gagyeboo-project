@@ -5,91 +5,30 @@ import Layout from "../components/layout";
 import Head from "next/head";
 import { MouseEvent, useState } from "react";
 import { cls } from "../libs/utils";
+import MonthChart from "../components/month-chart";
 
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  //Title,
-  //Tooltip,
-  //Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import {Context} from 'chartjs-plugin-datalabels';
+import { testData, TestDataItem } from "../test/testdata";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  //Title,
-  //Tooltip,
-  //Legend,
-  ChartDataLabels
-);
+function setData(data: TestDataItem[], sort: string): TestDataItem[] {
+  console.log(">>>", data, sort);
+  
+  if (!data) {
+    return [];
+  }
 
-export const options = {
-  indexAxis: "y" as const,
-  maintainAspectRatio: false,
-  plugins: {
-    title: {
-      display: false,
-      text: "이번달 지출 차트",
-    },
-    legend: {
-      display: false,
-    },
-    datalabels: {
-      color: "black",
-      formatter: function (value:number, context:Context) {
-        return `${context.dataset.label}(${Math.ceil(value * 0.0001)}%)`;
-      },
-    },
-  },
-  scales: {
-    x: {
-      display: false,
-      grid: {
-        display: false,
-      },
-      stacked: true,
-    },
-    y: {
-      display: false,
-      grid: {
-        display: false,
-      },
-      stacked: true,
-    },
-  },
-};
+  const copyData = [...data];
 
-export const data = {
-  labels: [""],
-  datasets: [
-    {
-      label: "쓴 돈",
-      data: [500000],
-      barThickness: 35,
-      backgroundColor: "rgb(255, 99, 132,0.5)",
-      datalabels: {
-        align: 'center' as const,
-        anchor: 'center' as const
-      },
-    },
-    {
-      label: "남은 돈",
-      data: [300000],
-      barThickness: 35,
-      backgroundColor: "rgb(53, 162, 235, 0.5)",
-      datalabels: {
-        align: 'center' as const,
-        anchor: 'center' as const
-      },
-    },
-  ],
-};
+  if (sort === "date") {
+    const sortedData = copyData.sort((a, b) => parseInt(a.day) - parseInt(b.day));
+    console.log(">>>2222", sortedData);
+    return sortedData;
+  } else if (sort === "tag") {
+    //TODO
+    return copyData;
+  } else {
+    return data;
+  }
+}
 
 const Home: NextPage = () => {
   const [sort, setSort] = useState("date");
@@ -97,6 +36,8 @@ const Home: NextPage = () => {
   const onSortBtnClick = (value: string) => {
     setSort(value);
   };
+
+  const data = setData(testData, sort);
 
   console.log(">>>sort", sort);
   return (
@@ -107,7 +48,7 @@ const Home: NextPage = () => {
 
       {/* 이번달 지출 페이지 */}
 
-      <div className="flex justify-center text-xl py-2">2023년 5월</div>
+      <div className="flex justify-center text-xl py-2">2023년 6월</div>
 
       <div>
         <div className="flex justify-end outline-yellow-300 outline px-2 py-1 m-2 rounded">
@@ -122,7 +63,7 @@ const Home: NextPage = () => {
       </div>
 
       <div className="flex justify-center m-2 h-10">
-        <Bar options={options} data={data} />
+        <MonthChart />
       </div>
 
       <div className="flex justify-end pr-1">
@@ -156,7 +97,7 @@ const Home: NextPage = () => {
                 sort === "date" ? "text-slate-900" : "text-slate-600"
               )}
             >
-              날짜별
+              날짜순
             </span>
           </button>
 
@@ -188,28 +129,25 @@ const Home: NextPage = () => {
                 sort === "tag" ? "text-slate-900" : "text-slate-600"
               )}
             >
-              태그별
+              태그순
             </span>
           </button>
         </div>
       </div>
 
       <div className="flex flex-col">
-        {sort === "date" &&
-          [1, 1, 1, 1, 1].map((_, i) => (
-            <Item
-              id={i}
-              key={i}
-              title="신전떡볶이"
-              price={5000}
-              date={"03/05"}
-            />
-          ))}
-
-        {sort === "tag" &&
-          [1, 1, 1, 1, 1].map((_, i) => (
-            <Item id={i} key={i} title="쇼핑(20%)" price={220000} date={""} />
-          ))}
+        {data.map((item, index) => (
+          <Item
+            id={index}
+            key={index}
+            sort={sort}
+            tagName={item.tagName}
+            title={item.title}
+            price={item.price}
+            yyyymm={item.yyyymm}
+            day={item.day}
+          />
+        ))}
 
         <FloatingButton />
       </div>
