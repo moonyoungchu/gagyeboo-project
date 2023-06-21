@@ -30,24 +30,13 @@ public class Consume {
 
     public Consume() {}
 
-    public Consume(long am_consume, String consume_ym, String consume_day){
+    public Consume(long am_consume, String consume_ym, String consume_day, Tag tag_id){
         super();
         this.am_consume = am_consume;
         this.consume_ym = consume_ym;
         this.consume_day = consume_day;
+        this.tag_id = tag_id;
     }
-
-//    @JsonIgnore
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "consume")
-//    private List<Bank> banks;
-//
-//    public List<Bank> getBanks() {
-//        return banks;
-//    }
-//
-//    public void setBanks(List<Bank> banks) {
-//        this.banks = banks;
-//    }
 
     public long getConsume_id() {
         return consume_id;
