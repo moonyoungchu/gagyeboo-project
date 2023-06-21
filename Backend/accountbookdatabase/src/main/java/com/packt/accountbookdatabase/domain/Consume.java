@@ -13,12 +13,24 @@ public class Consume {
     private long consume_id;
     private String consume_ym;
     private String consume_day;
-    private int am_consume;
+    private long am_consume;
+
+    @OneToOne
+    @JoinColumn(name = "tag_id")
+    private Tag tag_id;
+
+    public Tag getTag_id() {
+        return tag_id;
+    }
+
+    public void setTag_id(Tag tag_id) {
+        this.tag_id = tag_id;
+    }
 
 
     public Consume() {}
 
-    public Consume(int am_consume, String consume_ym, String consume_day){
+    public Consume(long am_consume, String consume_ym, String consume_day){
         super();
         this.am_consume = am_consume;
         this.consume_ym = consume_ym;
@@ -61,11 +73,11 @@ public class Consume {
         this.consume_day = consume_day;
     }
 
-    public int getAm_consume() {
+    public long getAm_consume() {
         return am_consume;
     }
 
-    public void setAm_consume(int am_consume) {
+    public void setAm_consume(long am_consume) {
         this.am_consume = am_consume;
     }
 
