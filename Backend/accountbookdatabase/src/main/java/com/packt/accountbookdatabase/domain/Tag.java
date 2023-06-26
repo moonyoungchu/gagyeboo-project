@@ -1,11 +1,13 @@
 package com.packt.accountbookdatabase.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Tag {
 
     @Id
@@ -14,6 +16,18 @@ public class Tag {
     private String tag_ym;
     private String tag_name;
 
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tag")
+    private List<Consume> consumes;
+
+    public List<Consume> getConsumes() {
+        return consumes;
+    }
+
+    public void setConsumes(List<Consume> consumes) {
+        this.consumes = consumes;
+    }
     public Tag(){}
     public Tag(String tag_ym, String tag_name){
         super();

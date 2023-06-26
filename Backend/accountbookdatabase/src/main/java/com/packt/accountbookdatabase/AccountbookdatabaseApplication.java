@@ -37,19 +37,20 @@ public class AccountbookdatabaseApplication implements CommandLineRunner {
 		Tag tag3 = new Tag("202306", "영화");
 		tagRepository.saveAll(Arrays.asList(tag1, tag2, tag3));
 
+
 		Consume consume1 = new Consume(2500,"202306","30",tag1);
 		Consume consume2 = new Consume(5000,"202306","25",tag2);
 		Consume consume3 = new Consume(6000,"202306","01",tag3);
 		Consume consume4 = new Consume(7000,"202306","02",tag3);
 
 		consumeRepository.saveAll(Arrays.asList(consume1, consume2, consume3, consume4));
-
 	}
 
 	public static void main(String[] args) {
 
 		SpringApplication.run(AccountbookdatabaseApplication.class, args);
 		logger.info("Aplication started");
+
 	}
 
 
