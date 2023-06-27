@@ -49,7 +49,7 @@ export default function Layout({
         </div>
       ) : null}
 
-      <div className="pt-24 pb-20 outline outline-2 outline-blue-400">{children}</div>
+      <div className="pt-24 pb-20 ">{children}</div>
     </div>
   );
 }

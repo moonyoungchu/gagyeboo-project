@@ -33,7 +33,7 @@ const Add: NextPage = () => {
                   <input
                     type="text"
                     name="date"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0"
+                    className="text-right block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0"
                     placeholder="##"
                   />
                   <span className="flex select-none items-center pr-3 text-gray-900">
@@ -59,7 +59,7 @@ const Add: NextPage = () => {
                   <input
                     type="text"
                     name="amount"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0"
+                    className="text-right block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0"
                     placeholder="지출금액을 입력하세요"
                   />
                   <span className="flex select-none items-center pr-3 text-gray-900">
