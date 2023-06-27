@@ -71,6 +71,29 @@ const Add: NextPage = () => {
 
             <div>
               <label
+                htmlFor="memo"
+                className="block text-sm font-medium text-gray-900"
+              >
+                메모
+              </label>
+              <div className="mt-2">
+                <div
+                  className="flex rounded-md
+                ring-1 ring-inset ring-gray-300 
+                focus-within:ring-2 focus-within:ring-inset focus-within:ring-yellow-400"
+                >
+                  <input
+                    type="text"
+                    name="memo"
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0"
+                    placeholder="메모를 입력하세요"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
                 htmlFor="tag-name"
                 className="block text-sm font-medium text-gray-900"
               >
