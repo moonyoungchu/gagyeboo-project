@@ -22,23 +22,17 @@ const EditPage: NextPage = () => {
               </label>
               <div className="mt-2">
                 <div
-                  className="flex rounded-md
+                  className="flex rounded-md bg-gray-50 pl-2
                 ring-1 ring-inset ring-gray-300 
                 focus-within:ring-2 focus-within:ring-inset focus-within:ring-yellow-400"
                 >
-                  <span className="flex select-none items-center pl-3 text-gray-900">
-                    {"6월"}
-                  </span>
-
                   <input
                     type="text"
                     name="date"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0"
-                    placeholder="##"
+                    disabled={true}
+                    value={"06월25일"}
                   />
-                  <span className="flex select-none items-center pr-3 text-gray-900">
-                    일
-                  </span>
                 </div>
               </div>
             </div>
@@ -59,12 +53,35 @@ const EditPage: NextPage = () => {
                   <input
                     type="text"
                     name="amount"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0"
+                    className="text-right block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0"
                     placeholder="지출금액을 입력하세요"
                   />
                   <span className="flex select-none items-center pr-3 text-gray-900">
                     원
                   </span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="memo"
+                className="block text-sm font-medium text-gray-900"
+              >
+                메모
+              </label>
+              <div className="mt-2">
+                <div
+                  className="flex rounded-md
+                ring-1 ring-inset ring-gray-300 
+                focus-within:ring-2 focus-within:ring-inset focus-within:ring-yellow-400"
+                >
+                  <input
+                    type="text"
+                    name="memo"
+                    className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0"
+                    placeholder="메모를 입력하세요"
+                  />
                 </div>
               </div>
             </div>
@@ -87,34 +104,6 @@ const EditPage: NextPage = () => {
             </div>
           </div>
         </form>
-
-        <div className="my-4">
-          <div className="flex flex-wrap">
-            {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => (
-              <Tag id={i} key={i} name={"식비"} />
-            ))}
-          </div>
-
-          <div>
-            <div className="mt-2">
-              <div
-                className="flex rounded-md
-                ring-1 ring-inset ring-gray-300 
-                focus-within:ring-1 focus-within:ring-inset focus-within:ring-blue-400"
-              >
-                <input
-                  type="text"
-                  name="new-tag"
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-3 text-gray-900 placeholder:text-gray-400 focus:ring-0"
-                  placeholder="새로운 태그를 입력하세요"
-                />
-                <span className="flex select-none items-center pr-3 text-blue-600">
-                  태그추가
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className="w-full h-12 max-w-md bottom-10 fixed flex justify-center items-center">

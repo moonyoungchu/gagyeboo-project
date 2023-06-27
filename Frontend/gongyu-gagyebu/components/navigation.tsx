@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { cls } from "../libs/utils";
 
 interface NavigationProps {
   canGoBack?: boolean;
@@ -10,7 +11,7 @@ interface NavigationProps {
 export default function Navigation({
   canGoBack,
   showMenubar,
-  title
+  title,
 }: NavigationProps) {
   const router = useRouter();
 
@@ -22,7 +23,10 @@ export default function Navigation({
 
   return (
     <div
-      className="bg-white w-full h-12 max-w-md text-lg font-medium text-gray-900 top-0 fixed flex justify-center items-center"
+      className={cls(
+        "bg-white w-full h-12 max-w-md text-lg font-medium text-gray-900 top-0 fixed flex justify-center items-center",
+        canGoBack ? "border-b border-gray-100" : ""
+      )}
     >
       {title}
 
