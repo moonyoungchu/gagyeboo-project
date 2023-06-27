@@ -7,9 +7,9 @@ import { MouseEvent, useState } from "react";
 import { cls } from "../libs/utils";
 import MonthChart from "../components/month-chart";
 
-import { testData, TestDataItem } from "../test/testdata";
+import { testDayData, TestDayDataItem } from "../test/testdata";
 
-function setData(data: TestDataItem[], sort: string): TestDataItem[] {
+function setData(data: TestDayDataItem[], sort: string): TestDayDataItem[] {
   console.log(">>>", data, sort);
   
   if (!data) {
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
     setSort(value);
   };
 
-  const data = setData(testData, sort);
+  const data = setData(testDayData, sort);
 
   console.log(">>>sort", sort);
   return (

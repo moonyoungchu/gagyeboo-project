@@ -26,7 +26,7 @@ const Budget: NextPage = () => {
 
 
       <div
-        className="w-full h-12 max-w-xl bottom-10 fixed flex justify-center items-center"
+        className="w-full h-12 max-w-md bottom-10 fixed flex justify-center items-center"
       >
         <button className="w-full mx-3 py-3 flex text-xl items-center justify-center bg-yellow-400 border-solid border-2">
           변경하기

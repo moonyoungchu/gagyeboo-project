@@ -22,7 +22,7 @@ export default function Navigation({
 
   return (
     <div
-      className="bg-white w-full h-12 max-w-xl text-lg font-medium text-gray-800 top-0 fixed flex justify-center items-center"
+      className="bg-white w-full h-12 max-w-md text-lg font-medium text-gray-800 top-0 fixed flex justify-center items-center"
     >
       {title}
 
@@ -46,7 +46,7 @@ export default function Navigation({
       ) : null}
 
       {showMenubar ? (
-        <div className="flex justify-between w-full max-w-xl px-3">
+        <div className="flex justify-between w-full max-w-md px-3">
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"

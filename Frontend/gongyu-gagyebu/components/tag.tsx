@@ -7,12 +7,12 @@ interface TagProps {
 
 export default function Tag({ name, id }: TagProps) {
   return (
-    <div className="flex px-3 mx-2 cursor-pointer justify-between border-2 border-red-400">
-      <div className="flex space-x-4">
-        <span className="font-medium text-gray-900 ">{name}</span>
+    <div className="flex px-3 py-1 mr-2 justify-between cursor-pointer ring-1 ring-inset ring-yellow-200 rounded-md">
+      <div className="flex">
+        <span className="font-medium text-blue-500">{name}</span>
       </div>
 
-      <div className="flex space-x-2 justify-end">
+      <div className="flex justify-end">
         <div className="flex space-x-1 items-center text-gray-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,6 +24,8 @@ export default function Tag({ name, id }: TagProps) {
           </svg>
         </div>
       </div>
+
+
     </div>
   );
 }
