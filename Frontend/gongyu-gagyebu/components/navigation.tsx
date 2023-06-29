@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { cls } from "../libs/utils";
 
 interface NavigationProps {
   canGoBack?: boolean;
@@ -10,7 +11,7 @@ interface NavigationProps {
 export default function Navigation({
   canGoBack,
   showMenubar,
-  title
+  title,
 }: NavigationProps) {
   const router = useRouter();
 
@@ -22,7 +23,10 @@ export default function Navigation({
 
   return (
     <div
-      className="bg-white w-full h-12 max-w-xl text-lg font-medium text-gray-800 top-0 fixed flex justify-center items-center"
+      className={cls(
+        "bg-white w-full h-12 max-w-md text-lg font-medium text-gray-900 top-0 fixed flex justify-center items-center",
+        canGoBack ? "border-b border-gray-100" : ""
+      )}
     >
       {title}
 
@@ -46,7 +50,7 @@ export default function Navigation({
       ) : null}
 
       {showMenubar ? (
-        <div className="flex justify-between w-full max-w-xl px-3">
+        <div className="flex justify-between w-full max-w-md px-3">
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +69,7 @@ export default function Navigation({
           </button>
 
           <Link href="/budget">
-            <a className="outline-yellow-400 outline">예산수정</a>
+            <a className="text-gray-900">예산수정</a>
           </Link>
         </div>
       ) : null}

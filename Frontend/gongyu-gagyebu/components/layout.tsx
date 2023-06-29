@@ -24,7 +24,7 @@ export default function Layout({
       <Navigation canGoBack={canGoBack} showMenubar={showMenubar} title={title}/>
 
       {router.pathname === "/" || router.pathname === "/year" ? (
-        <div className="grid grid-cols-2 bg-yellow-100 top-12 fixed w-full max-w-xl">
+        <div className="grid grid-cols-2 bg-yellow-100 top-12 fixed w-full max-w-md">
           <Link href="/">
             <a
               className={cls(
@@ -49,7 +49,7 @@ export default function Layout({
         </div>
       ) : null}
 
-      <div className="pt-24 pb-5">{children}</div>
+      <div className="pt-24 pb-20 ">{children}</div>
     </div>
   );
 }
