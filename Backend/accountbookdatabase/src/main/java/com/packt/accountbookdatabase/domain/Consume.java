@@ -1,7 +1,5 @@
 package com.packt.accountbookdatabase.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,27 +13,27 @@ public class Consume {
     private String consume_day;
     private long am_consume;
 
-    @OneToOne
-    @JoinColumn(name = "tag_id")
-    private Tag tag_id;
 
-    public Tag getTag_id() {
-        return tag_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tag")
+    private Tag tag;
+
+    public Tag getTag() {
+        return tag;
     }
 
-    public void setTag_id(Tag tag_id) {
-        this.tag_id = tag_id;
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
-
 
     public Consume() {}
 
-    public Consume(long am_consume, String consume_ym, String consume_day, Tag tag_id){
+    public Consume(long am_consume, String consume_ym, String consume_day, Tag tag){
         super();
         this.am_consume = am_consume;
         this.consume_ym = consume_ym;
         this.consume_day = consume_day;
-        this.tag_id = tag_id;
+        this.tag = tag;
     }
 
     public long getConsume_id() {
@@ -58,10 +56,9 @@ public class Consume {
         return consume_day;
     }
 
-    public void setConsume_day(String Consume_day) {
+    public void setConsume_day(String consume_day) {
         this.consume_day = consume_day;
     }
-
     public long getAm_consume() {
         return am_consume;
     }
